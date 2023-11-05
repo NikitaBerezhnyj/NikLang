@@ -1,0 +1,15 @@
+program ::= func_declaration* main_function
+func_declaration ::= func keyword identifier parameter_list* block
+main_function ::= main keyword block
+parameter_list ::= parameter (comma parameter)*
+parameter ::= data_type identifier
+block ::= { statement* }
+statement ::= declaration | assignment | control_flow | function_call
+declaration ::= data_type identifier (initializer)?
+assignment ::= identifier = expression
+control_flow ::= if_statement | while_statement | for_statement
+function_call ::= identifier parameter_list?
+expression ::= literal | variable | operator expression
+literal ::= number | string | bool_literal
+variable ::= identifier
+operator ::= + | - | * | / | == | != | > | < | >= | <=
