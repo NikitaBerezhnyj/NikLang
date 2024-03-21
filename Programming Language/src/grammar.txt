@@ -1,15 +1,37 @@
-program ::= func_declaration* main_function
-func_declaration ::= func keyword identifier parameter_list* block
-main_function ::= main keyword block
-parameter_list ::= parameter (comma parameter)*
-parameter ::= data_type identifier
-block ::= { statement* }
-statement ::= declaration | assignment | control_flow | function_call
-declaration ::= data_type identifier (initializer)?
-assignment ::= identifier = expression
-control_flow ::= if_statement | while_statement | for_statement
-function_call ::= identifier parameter_list?
-expression ::= literal | variable | operator expression
-literal ::= number | string | bool_literal
-variable ::= identifier
-operator ::= + | - | * | / | == | != | > | < | >= | <=
+program : function_call | statement
+
+function_call : IDENTIFIER "(" arguments ")" ";"
+
+arguments : expression | arguments "," expression
+
+statement : variable_declaration | assignment | if_statement | while_loop | for_loop | function_declaration | print_statement
+
+variable_declaration : "int" IDENTIFIER "=" expression ";"
+
+assignment : IDENTIFIER "=" expression ";"
+
+if_statement : "if" "(" expression ")" "{" statements "}" [elif_statement] [else_statement]
+
+elif_statement : "elif" "(" expression ")" "{" statements "}"
+
+else_statement : "else" "{" statements "}"
+
+while_loop : "while" "(" expression ")" "{" statements "}"
+
+for_loop : "for" "(" data_type IDENTIFIER "=" expression ";" expression ";" expression ")" "{" statements "}"
+
+function_declaration : "func" IDENTIFIER "(" parameters ")" "{" statements "}"
+
+parameters : | data_type IDENTIFIER | parameters "," data_type IDENTIFIER
+
+print_statement : "print" "(" expression ")" ";"
+
+expression : literal | identifier | binary_expression | unary_expression | function_call
+
+binary_expression : expression "+" expression | expression "-" expression | expression "*" expression | expression "/" expression | expression ">" expression | expression "<" expression | expression ">=" expression | expression "<=" expression | expression "==" expression
+
+unary_expression : "-" expression
+
+literal : NUMBER | F_NUMBER | BOOLEAN
+
+identifier : IDENTIFIER

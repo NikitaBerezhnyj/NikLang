@@ -29,8 +29,8 @@ void processFile(const std::string &file_path) {
         std::cout << "[" <<  "type:" << token.type << "value:" << token.value << "]\n";
     }
 
-    Parser parser(tokens);
-    parser.parse();
+    // Parser parser(tokens);
+    // parser.parse();
 }
 
 
@@ -70,8 +70,8 @@ void ParserProcessFile(const std::string &file_path) {
     Lexer lexer(input);
     std::vector<TOKEN> tokens = lexer.tokenize();
 
-    Parser parser(tokens);
-    parser.parse();
+    // Parser parser(tokens);
+    // parser.parse();
 
     // std::cout << "AST:\n";
     // for (const auto &token : tokens) {

@@ -7,7 +7,7 @@ func Start() {
     int sum = a + b;
 
     print(sum);
-};
+}
 
 // функція Тест викликається
 Start();
